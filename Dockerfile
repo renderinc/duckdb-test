@@ -1,4 +1,4 @@
-FROM node:lts-bullseye
+FROM node:latest
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
@@ -7,7 +7,7 @@ ENV LANG=C.UTF-8 \
 
 WORKDIR /home/render
 
-# get the datafile first
+# get the data file first
 RUN wget --quiet https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2019-01.parquet
 
 RUN apt-get -qq update \
@@ -35,5 +35,7 @@ RUN wget -q https://github.com/duckdb/duckdb/releases/download/v0.4.0/duckdb_cli
     rm -rf duckdb_cli-linux-amd64.zip
 
 ENV PORT="${PORT:-10000}"
+
+COPY . .
 
 CMD npx --yes -q node-static -a 0.0.0.0 -p $PORT
