@@ -8,7 +8,7 @@ ENV LANG=C.UTF-8 \
 WORKDIR /home/render
 
 # get the data file first
-RUN wget --quiet https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2019-01.parquet
+RUN wget --quiet https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2019-01.parquet
 
 RUN apt-get -qq update \
   && apt-get -qq install -y --no-install-recommends \
