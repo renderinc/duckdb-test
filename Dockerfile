@@ -1,4 +1,5 @@
 FROM node:latest
+USER root
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
@@ -16,6 +17,9 @@ RUN apt-get -qq update \
     wget \
     curl \
     gnupg2 \
+    iperf3 \
+    fio \
+    vim \
     lsb-release \
   > /dev/null \
   && apt-get -qq clean \
